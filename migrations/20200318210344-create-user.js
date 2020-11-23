@@ -26,6 +26,11 @@ module.exports = {
       },
       isOwner: {
         type: Sequelize.BOOLEAN,
+        type: Sequelize.INTEGER
+      },
+      isOwner: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       createdAt: {
         allowNull: false,
