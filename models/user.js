@@ -27,6 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      phone: {
+        type: DataTypes.INTEGER
+      },
+      isOwner: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+      },
     },
     {
       sequelize,
