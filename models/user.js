@@ -32,11 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       isOwner: {
         type: DataTypes.BOOLEAN,
-        type: DataTypes.INTEGER
-      },
-      isOwner: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
       },
     },
     {
