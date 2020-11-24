@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       isOwner: {
         type: DataTypes.BOOLEAN,
       },
-      storeId: {
+      userId: {
         type: DataTypes.INTEGER
       },
     },

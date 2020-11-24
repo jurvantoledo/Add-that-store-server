@@ -12,7 +12,7 @@ module.exports = {
           productId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
-          storeId: 1,
+          userId: 1,
         },
         {
           name: "Less Awesome Store",
@@ -21,7 +21,7 @@ module.exports = {
           productId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
-          storeId: 2,
+          userId: 2,
         },
         {
           name: "Totally not an Awesome Store",
@@ -30,7 +30,7 @@ module.exports = {
           productId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
-          storeId: 3,
+          userId: 3,
         },
       ],
       {}
