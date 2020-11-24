@@ -11,7 +11,7 @@ module.exports = {
           description: "An awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 1,
+          storeId: 1,
         },
         {
           name: "Less Awesome product",
@@ -19,7 +19,7 @@ module.exports = {
           description: "An less awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 1,
+          storeId: 1,
         },
         {
           name: "Not at all an Awesome product",
@@ -27,7 +27,7 @@ module.exports = {
           description: "Not at all an awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 2,
+          storeId: 2,
         },
         {
           name: "decent",
@@ -35,7 +35,7 @@ module.exports = {
           description: "decent description",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 2,
+          storeId: 2,
         },
         {
           name: "boring",
@@ -43,7 +43,7 @@ module.exports = {
           description: "boring description",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 3,
+          storeId: 3,
         },
         {
           name: "so many products",
@@ -51,7 +51,7 @@ module.exports = {
           description: "so many product descriptions",
           createdAt: new Date(),
           updatedAt: new Date(),
-          productId: 3,
+          storeId: 3,
         },
       ],
       {}
