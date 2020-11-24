@@ -6,6 +6,8 @@ const userRouter = require("./routers/users")
 const storeRouter = require("./routers/stores")
 const productRouter = require("./routers/products")
 const authMiddleWare = require("./auth/middleware");
+const bodyParser = require('body-parser')
+
 
 const app = express();
 
@@ -17,6 +19,8 @@ const app = express();
  *
  */
 app.use(corsMiddleWare());
+app.use(bodyParser.json()) // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.DELAY) {
   app.use((req, res, next) => {
