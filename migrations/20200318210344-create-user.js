@@ -21,6 +21,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      phone: {
+        type: Sequelize.INTEGER,
+      },
+      isOwner: {
+        type: Sequelize.BOOLEAN,
+      },
+      userId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
