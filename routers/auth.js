@@ -36,7 +36,7 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res) => {
   const { email, password, name, phone, isOwner } = req.body;
-  if (!email || !password || !name || !phone || !isOwner) {
+  if (!email || !password || !name || !phone) {
     return res.status(400).send(
       "Please provide an email, password, name, and a phone number. And select if you are a store owner or a customer"
       );
