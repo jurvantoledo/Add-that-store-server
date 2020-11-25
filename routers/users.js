@@ -36,9 +36,9 @@ router.get("/:id", async (req, res) => {
     res.status(200).send({ message: "ok", user });
   });
 
-  router.post("/:id/store", async (req, res, next) => {
+  router.post("/:id", async (req, res, next) => {
     try {
-    const store = await Store.findByPk(req.params.id);
+    const store = await User.findByPk(req.params.id);
     console.log(store);
   
     const { name, address, description, image } = req.body;
