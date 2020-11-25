@@ -17,4 +17,30 @@ router.get("/", async (req, res, next) => {
     }
 })
 
+router.post("/:id/add-store", async (req, res, next) => {
+    try {
+    const store = await Store.findByPk(req.params.id);
+    console.log(store);
+
+    const { name, address, description, image } = req.body;
+    if (!name || !address || !description || !image) {
+      return res.status(400).send(
+        "Please provide an name, address, description, and a image."
+        );
+    }
+  
+      const newStore = await Store.create({
+        name,
+        address,
+        description,
+        image,
+        userId: store.id,
+      });
+      
+      res.status(201).send({ message: "Store created", newStore });
+    } catch (error) {
+        next(error)
+      }
+  });
+
 module.exports = router;
