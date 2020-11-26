@@ -41,10 +41,10 @@ router.get("/:id", async (req, res) => {
     const store = await User.findByPk(req.params.id);
     console.log(store);
   
-    const { name, address, description, image } = req.body;
-    if (!name || !address || !description || !image) {
+    const { name, address, description, image, category } = req.body;
+    if (!name || !address || !description || !image || !category) {
       return res.status(400).send(
-        "Please provide an name, address, description, and a image."
+        "Please provide an name, address, description, image, and select the right category."
         );
     }
   
@@ -53,6 +53,7 @@ router.get("/:id", async (req, res) => {
         address,
         description,
         image,
+        category,
         userId: store.id,
       });
       
