@@ -17,7 +17,16 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      country: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
       address: {
+        type: Sequelize.STRING
+      },
+      postCode: {
         type: Sequelize.STRING
       },
       category: {

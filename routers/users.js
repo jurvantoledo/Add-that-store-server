@@ -41,16 +41,21 @@ router.get("/:id", async (req, res) => {
     const store = await User.findByPk(req.params.id);
     console.log(store);
   
-    const { name, address, description, image, category } = req.body;
-    if (!name || !address || !description || !image || !category) {
+    const { name, country, city, address, postCode, description, image, category } = req.body;
+    if 
+    (!name || !country || !city || !address || !postCode || !description || !image || !category) 
+    {
       return res.status(400).send(
-        "Please provide an name, address, description, image, and select the right category."
+        "Please make sure everything is filled in rightfully."
         );
     }
   
       const newStore = await Store.create({
         name,
+        country,
+        city,
         address,
+        postCode,
         description,
         image,
         category,
