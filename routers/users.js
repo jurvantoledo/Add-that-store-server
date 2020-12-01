@@ -17,24 +17,24 @@ router.get("/", async (req, res, next) => {
 })
 
 router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-  
-    console.log(id);
-    if (isNaN(parseInt(id))) {
-      return res.status(400).send({ message: "user id is not a number" });
-    }
-  
-    const user = await User.findByPk(id, {
-      include: [Store],
-      order: [[Store, "createdAt", "DESC"]]
-    });
-  
-    if (user === null) {
-      return res.status(404).send({ message: "User not found" });
-    }
-  
-    res.status(200).send({ message: "ok", user });
+  const { id } = req.params;
+
+  console.log(id);
+  if (isNaN(parseInt(id))) {
+    return res.status(400).send({ message: "user id is not a number" });
+  }
+
+  const user = await User.findByPk(id, {
+    include: [Store],
+    order: [[Store, "createdAt", "DESC"]]
   });
+
+  if (user === null) {
+    return res.status(404).send({ message: "User not found" });
+  }
+
+  res.status(200).send({ message: "ok", user });
+});
 
   router.post("/:id", async (req, res, next) => {
     try {

@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           name: "Awesome product",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "An awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: "Less Awesome product",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "An less awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           name: "Not at all an Awesome product",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "Not at all an awesome description",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           name: "decent",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "decent description",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           name: "boring",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "boring description",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           name: "so many products",
-          image: "An image",
+          image: "https://www.dermstore.com/blog/wp-content/uploads/2018/01/080819-Body-Prods.jpg",
           description: "so many product descriptions",
           createdAt: new Date(),
           updatedAt: new Date(),
