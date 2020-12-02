@@ -1,4 +1,7 @@
 const { Router } = require("express")
+const bcrypt = require("bcrypt");
+const { SALT_ROUNDS } = require("../config/constants");
+const authMiddleware = require("../auth/middleware");
 const User = require("../models").user
 const Store = require("../models").store
 
@@ -34,6 +37,65 @@ router.get("/:id", async (req, res) => {
   }
 
   res.status(200).send({ message: "ok", user });
+});
+
+router.patch("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  const { email, name, phone, isOwner } = req.body;
+
+  if (!id) {
+    return res.status(401).json({ message: "User not found." });
+  }
+
+  try {
+    const userToUpdate = await User.findByPk(id);
+
+    if (!userToUpdate) {
+      return res.status(404).json({ message: "No user to update found." });
+    }
+
+    const updatedUser = await userToUpdate.update({
+      name,
+      email,
+      phone,
+      isOwner,
+    });
+
+    delete updatedUser.dataValues["password"]; // don't send back the password hash
+
+    res.json(updatedUser);
+  } catch (e) {
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
+router.patch("/:id/password", async (req, res, next) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  if (!id) {
+    return res.status(401).json({ message: "User not found." });
+  }
+
+  try {
+    const userToUpdate = await User.findByPk(id);
+
+    if (!userToUpdate) {
+      return res.status(404).json({ message: "No user to update found." });
+    }
+
+    const updatedUser = await userToUpdate.update({
+      password: bcrypt.hashSync(password, SALT_ROUNDS),
+    });
+
+    delete updatedUser.dataValues["password"]; // don't send back the password hash
+
+    res.status(200).send({ message: "Password updated." });
+  } catch (e) {
+    console.log("ERROR:", e);
+    next(e);
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
 });
 
   router.post("/:id", async (req, res, next) => {

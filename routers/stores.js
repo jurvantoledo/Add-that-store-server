@@ -1,4 +1,5 @@
 const { Router } = require("express")
+const authMiddleware = require("../auth/middleware");
 const User = require("../models").user
 const Store = require("../models").store
 const Product = require("../models").product
@@ -66,6 +67,40 @@ router.post("/:id", async (req, res, next) => {
   } catch (error) {
       next(error)
     }
+});
+
+router.patch("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  const { name, country, city, address, postCode, description, image, category } = req.body;
+
+  if (!id) {
+    return res.status(401).json({ message: "Store not found." });
+  }
+
+  try {
+    const storeToUpdate = await Store.findByPk(id);
+
+    if (!storeToUpdate) {
+      return res.status(404).json({ message: "No user found." });
+    }
+
+    const updatedStore = await storeToUpdate.update({
+        name,
+        country,
+        city,
+        address,
+        postCode,
+        description,
+        image,
+        category,
+    });
+
+    delete updatedStore.dataValues["password"]; // don't send back the password hash
+
+    res.json(updatedStore);
+  } catch (e) {
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
 });
 
 module.exports = router;
