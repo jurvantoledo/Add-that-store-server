@@ -52,7 +52,7 @@ router.post("/:id", async (req, res, next) => {
   (!name || !description || !image) 
   {
     return res.status(400).send(
-      "Please make sure everything is filled in rightfully."
+      "Please make sure everything is filled in right."
       );
   }
 
@@ -78,28 +78,31 @@ router.patch("/:id", async (req, res, next) => {
   }
 
   try {
-    const storeToUpdate = await Store.findByPk(id);
+    const store = await Store.findByPk(id, {
+      include: [User],
+      order: [[User, "createdAt", "DESC"]]
+    });
 
-    if (!storeToUpdate) {
-      return res.status(404).json({ message: "No user found." });
+    if (!store) {
+      return res.status(404).json({ message: "No store found." });
     }
 
-    const updatedStore = await storeToUpdate.update({
-        name,
-        country,
-        city,
-        address,
-        postCode,
-        description,
-        image,
-        category,
+    const updatedStore = await store.update({
+      name,
+      country,
+      city,
+      address,
+      postCode,
+      description,
+      image,
+      category,
     });
 
     delete updatedStore.dataValues["password"]; // don't send back the password hash
 
     res.json(updatedStore);
   } catch (e) {
-    return res.status(400).send({ message: "Something went wrong, sorry" });
+    next(e);
   }
 });
 

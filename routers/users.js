@@ -39,7 +39,7 @@ router.get("/:id", async (req, res) => {
   res.status(200).send({ message: "ok", user });
 });
 
-router.patch("/:id", async (req, res, next) => {
+router.patch("/:id", authMiddleware, async (req, res, next) => {
   const { id } = req.params;
   const { email, name, phone, isOwner } = req.body;
 
@@ -69,7 +69,7 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id/password", async (req, res, next) => {
+router.patch("/:id/password", authMiddleware, async (req, res, next) => {
   const { id } = req.params;
   const { password } = req.body;
 
@@ -108,7 +108,7 @@ router.patch("/:id/password", async (req, res, next) => {
     (!name || !country || !city || !address || !postCode || !description || !image || !category) 
     {
       return res.status(400).send(
-        "Please make sure everything is filled in rightfully."
+        "Please make sure everything is filled in right."
         );
     }
   
